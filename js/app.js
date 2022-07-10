@@ -2,51 +2,77 @@
 
 //define variables
 const allUser=[];
-const min=0;
-const max=0;
+ 
 // creat a constructor
 
-function User(employeeID, fullName, departmentName , whichLevel, imageURL, muchSalary ){
+function User(employeeID, fullName, departmentName , whichLevel, imageURL){
+
 this.employeeID=employeeID;
 this.fullName=fullName;
 this.departmentName=departmentName;
 this.whichLevel=whichLevel;
 this.imageURL=imageURL;
-this.muchSalary;
 allUser.push(this);
 }
- 
+ //console.log(allUser)
 
 // create copies of the object(instances)
-const Ghazi=new User("1000", "Ghazi Samer", "Administration","Senior","image",muchSalary(1500,2000);)
-const Lana=new User("1001", "Lana Ali", "Finance","Senior","image",muchSalary(1500,2000););
-const Tamara=new User("1002", "Tamara Ayoub", "Marketing","Senior","image",muchSalary(1500,2000));
-const Safi=new User("1003", "Safi Walid", "Administration","MidSenior","image",muchSalary(1000,1500));
-const Omar=new User("1004", "Omar Zaid", "Development","Senior","image",muchSalary(1500,2000));
-const Rana=new User("1005", "Rana Saleh", "Development","Junior","image",muchSalary(500,1000));
-const Hadi=new User("1006", "Hadi Ahmad", "Finance","Mid-Senior","image",muchSalary(1000,1500));
+const Ghazi=new User("1000", "Ghazi Samer", "Administration","Senior","")
+const Lana=new User("1001", "Lana Ali", "Finance","Senior","");
+const Tamara=new User("1002", "Tamara Ayoub", "Marketing","Senior","");
+const Safi=new User("1003", "Safi Walid", "Administration","MidSenior","");
+const Omar=new User("1004", "Omar Zaid", "Development","Senior","");
+const Rana=new User("1005", "Rana Saleh", "Development","Junior","");
+const Hadi=new User("1006", "Hadi Ahmad", "Finance","MidSenior","");
 
- document.write(Ghazi.fullName :(1-.075)*Ghazi.Salary(1500,2000);)  ;// here is the taxes percentage %
+User.prototype.Salary=function(){
 
-User.prototype.printUser=function(){
-    console.log(`${this.fullName}}` )
+    if (this.whichLevel.toLowerCase()=="senior") {
+       this.Salary= getRndInteger(1500,2000)
+    }
+     
+    if (this.whichLevel.toLowerCase()=="midsenior") {
+       this.Salary= getRndInteger(1000,1500)
+    }
+     
+    if (this.whichLevel.toLowerCase()=="junior"){
+        this.Salary=getRndInteger(500,1000)
+    }
+     
 }
-document.write("Welcome to HR-management-system");
+
+User.prototype.netSalary = function(){
+    if (this.whichLevel.toLowerCase()==="senior") {
+       this.netSalary= this.Salary*(1-0.075);
+    }
+    if (this.whichLevel.toLowerCase()==="midsenior"){
+       this.netSalary= this.Salary*(1-0.075);
+    }
+
+    if (this.whichLevel.toLowerCase()==="junior"){
+        this.netSalary=this.Salary*(1-0.075);
+    }
+
+}
  
-transverse();
+User.prototype.printInfo = function(){
+console.log(`Name: ${this.fullName} ,   Salary: ${this.Salary},   netSalary:${this.netSalary} `)
+    document.write(`<p> <br><br> The salary for ${this.fullName} is ${this.Salary}JD, and the net salary is ${this.netSalary}JD </p>`)
+}
 
 //functions
-function transverse (){
-for (let i=0;i<allUser;i++){
-    console.log(allUser[i]);
-    allUser[i].printUser();
+ 
+for (let i=0;i<allUser.length;i++){
+     
+        console.log(i,allUser[i]);
+        allUser[i].Salary();
+        allUser[i].netSalary();
+        allUser[i].printInfo();
+    
 }
 
-function muchSalary(min,max){
-    return Math.floor(Math.random()*(max-min+1))+min;
 
-}*/
-function muchSalary(min,max){
-    Salary=Math.floor(Math.random()*(max-min+1))+min;
-    return Math.floor(Math.random()*(max-min+1))+min;
-}
+
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+  }
